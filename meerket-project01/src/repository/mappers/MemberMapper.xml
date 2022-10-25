@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace= "com.meerket.project01.repository.mappers.MemberMapper">
+
+
+
+
+
+<!-- id에 해당하는 pass를 반환 -->
+
+<select id="login" resultType="Member">
+	SELECT pass FROM member WHERE userId = #{userId}
+</select>
+
+
+<!-- 회원정보 반환 -->
+
+<select id="getMember" resultType="Member">
+	SELECT * FROM member WHERE userId = #{userId}
+</select>
+
+
+
+
+<!--	회원 정보 추가	-->
+
+<insert id="addMember" parameterType="Member" useGeneratedKeys="true" keyProperty="userNo">>
+		INSERT INTO member <!-- (userId, name, nickname, pass, securityNumber, phone,email, address1, address2, zipcode, introduction, image,reg_date  ) -->
+		VALUES( #{userId}, #{name}, #{nickname},#{pass},#{securityNumber}, #{phone},#{email},
+			#{address1},#{address2}, #{zipcode}, #{introduction},
+			#{image},  SYSDATE())
+</insert>
+
+<select id = "memberPassCheck" resultType="String">
+	
+	SELECT
+		pass
+	FROM member
+	WHERE userId = #{userId}
+
+</select>
+
+<!-- 회원 정보 수정 매핑 -->
+
+<update id = "updateMember" parameterType = "Member">
+
+		UPDATE member
+			SET pass=#{pass}, email=#{email}, phone=#{phone}, nickname = #{nickname} securityNumber =#{securityNumber}
+				zipcode=#{zipcode}, address1=#{address1}, address2=#{address2}, introduction = #{introduction}
+				phone=#{phone}, email_get=#{emailGet}, reg_date=SYSDATE()
+		WHERE userId=#{userId}
+			
+</update>
+
+
+
+
+
+
+</mapper>

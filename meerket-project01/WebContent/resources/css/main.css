@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+.popularSerch{
+	text-align: center;
+	}
+
+.popularItem ul li{
+	float: left;
+	text-align: center;
+	margin-right: 40px;
+	color:#00e099;
+}
+
+.popularItem ul{
+	display: inline-block;
+	padding: 0px;
+}
+.popularItem{
+	text-align: center;
+}
+.tabletable td{
+	border: 1px solid black;
+}
+
